@@ -7,7 +7,7 @@ import (
 )
 
 /**
- * 测试生成数组
+ * 测试生成随机数组
  */
 func generateArray(n int) []int{
 	arr :=make([]int,n)
@@ -69,7 +69,7 @@ func main(){
 	找出那个只出现了一次的元素。可以使用 for 循环遍历数组，结合 if 条件判断和 map 数据结构来解决，
 	例如通过 map 记录每个元素出现的次数，然后再遍历 map 找到出现次数为1的元素。
 	*/
-	arr := generateArray(10)
+	arr := generateArray(10) // 随机生成10个元素
 	fmt.Println("随机数组：")
 	printMatrix(arr)
 
