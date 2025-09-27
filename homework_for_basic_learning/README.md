@@ -100,4 +100,47 @@ func isPalindromeOther(x int)bool{
 	return x==res || x==res/10
 }
 ```
- 
+
+# 2、字符串的操作
+
+## 2.1、有效的括号 
+考察：字符串处理、栈的使用
+
+题目：给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效
+
+链接：https://leetcode-cn.com/problems/valid-parentheses/
+
+[使用栈方式解答](homework_for_basic_learning/string/task1/main.go)
+
+* 时间复杂度 = O(n). 遍历字符串 s
+* 空间复杂度 = O(n) 创建一个栈
+
+```go
+
+func isValid(s string) bool{
+	var stack []rune
+	for _,v:=range s{
+		if v=='(' || v=='{' || v=='['{
+			stack=append(stack, v)
+		}else{
+			stackLen:=len(stack)-1
+			if len(stack)==0{
+				return false
+			}else if v==')' && stack[stackLen]=='(' {
+				stack=stack[:stackLen]
+			}else if v=='}' && stack[stackLen]=='{'{
+				stack=stack[:stackLen]
+			}else if v==']' && stack[stackLen]=='['{
+				stack=stack[:stackLen]
+			}else{
+				return false
+			}
+
+		}
+	}
+
+	return len(stack)==0
+}
+```
+
+## 2.2、最长公共前缀
