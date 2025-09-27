@@ -21,11 +21,11 @@ func findOnlyMutl(nums []int) []int{
 }
 
 func findOnlyOne2(nums []int) int{ 
- 	ans := 0
+ 	res := 0
     for _,num:= range nums {
-        ans =ans^num
+        res =res^num
     }
-    return ans
+    return res
 }
 
 func findOnlyOne(nums []int) (int, bool){
