@@ -7,8 +7,9 @@
 
  [使用异或方式解答，但是数组元素中，仅且有个元素出现一次，且其他元素都出现两次。](homework_for_basic_learning/control_flow/task1/main.go)
 
-时间复杂度 = O(n)
-空间复杂度 = O(n)
+* 时间复杂度 = O(n)
+* 空间复杂度 = O(n)
+
 
  ```go
 
@@ -28,8 +29,10 @@ func findOnlyOne(nums []int) int{
 }
 ```
 优化：
-时间复杂度 O(n)
-空间复杂度 O(1)
+
+* 时间复杂度 O(n)
+* 空间复杂度 O(1)
+
 
  ```go
 
@@ -54,9 +57,9 @@ func findOnlyOne(nums []int) int{
 
 自己写的代码：
 
-时间复杂度	O(log x)	
+* 时间复杂度	O(log x)	
 
-空间复杂度：O(log x) strconv.Itoa(x) 创建了一个长度为 log x 的字符串
+* 空间复杂度：O(log x) strconv.Itoa(x) 创建了一个长度为 log x 的字符串
 
 ```go
 
@@ -78,9 +81,9 @@ func isPalindrome(x int) bool{
 
 优化：
 
-时间复杂度	O(log x)	只处理一半的位数，增长极慢
+* 时间复杂度	O(log x)	只处理一半的位数，增长极慢
 
-空间复杂度	O(1)	只用一个变量，不额外开空间
+* 空间复杂度	O(1)	只用一个变量，不额外开空间
 
 ```go
 
