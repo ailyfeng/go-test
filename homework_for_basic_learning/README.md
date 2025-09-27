@@ -144,3 +144,36 @@ func isValid(s string) bool{
 ```
 
 ## 2.2、最长公共前缀
+
+考察：字符串处理、循环嵌套
+
+题目：查找字符串数组中的最长公共前缀
+
+链接：https://leetcode-cn.com/problems/longest-common-prefix/ 
+
+
+[使用嵌套循环方式解答](homework_for_basic_learning/string/task2/main.go)
+
+* 时间复杂度 = O(n*m) n为字符串数组的长度，m为字符串数组中字符串的长度
+* 空间复杂度 = O(1) 不使用额外空间
+
+```go
+
+func longestCommonPrefix(strs []string) string{
+	if len(strs)==0{
+		return ""
+	}
+	var prefix string = strs[0]
+
+	for _,str:=range strs{
+		for i:=0;i<len(prefix);i++{
+			if i>=len(str) || prefix[i]!=str[i]{
+				prefix = prefix[:i]
+				break
+			}
+		}
+
+	}
+	return prefix
+}
+```
