@@ -21,6 +21,18 @@ func isPalindrome(x int) bool{
 	}
 	return flag
 }
+func isPalindromeOther(x int)bool{
+	if(x<0 || (x%10==0 && x!=0)){
+		return false
+	}
+	res:=0
+	for x>res{
+		res=res*10+x%10
+		x/=10
+
+	}
+	return x==res || x==res/10
+}
 
 
 func main() {
@@ -34,13 +46,18 @@ func main() {
 	这个概念来源于“回文”（Palindrome），即正着读和反着读都一样的字符串（如 "level"、"radar"、"上海海上"）。
 	*/
 	
-	var randNumber int =12344321// rand.Intn(5)
+	var randNumber int =123321// rand.Intn(5)
 	fmt.Println(randNumber)
 
-	flag:=isPalindrome(randNumber)
+	// flag:=isPalindrome(randNumber)
+	flag:=isPalindromeOther(randNumber)
+	
 	if flag {
 		fmt.Println("回文数")
 	} else {
 		fmt.Println("非回文数")
 	}
+
+
+
 }

@@ -28,22 +28,19 @@ func findOnlyOne2(nums []int) int{
     return res
 }
 
-func findOnlyOne(nums []int) (int, bool){
+func findOnlyOne(nums []int) int{
 	
-	var res int
-	if(len(nums)==0){
-		return res,false
-	}
 	m:=make(map[int]int)
 	for _, v := range nums {
 		m[v]++
 	}
+	var res int
 	for k,v:=range m{
 		if v==1{
-			return k,true
+			res= k
 		}
 	}
-	return res,false
+	return res
 }
 
 func main(){
@@ -55,7 +52,8 @@ func main(){
 	例如通过 map 记录每个元素出现的次数，然后再遍历 map 找到出现次数为1的元素。
 	*/
 	arr := []int{2,9,2,3,3}
-	m:=findOnlyOne2(arr)
+	m:=findOnlyOne(arr)
+	// m:=findOnlyOne2(arr)
 	fmt.Println(m)
  
 }
