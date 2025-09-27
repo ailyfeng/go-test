@@ -7,6 +7,9 @@
 
  [使用异或方式解答，但是数组元素中，仅且有个元素出现一次，且其他元素都出现两次。](homework_for_basic_learning/control_flow/task1/main.go)
 
+时间复杂度 = O(n)
+空间复杂度 = O(n)
+
  ```go
 
 func findOnlyOne(nums []int) int{
@@ -25,6 +28,8 @@ func findOnlyOne(nums []int) int{
 }
 ```
 优化：
+时间复杂度 O(n)
+空间复杂度 O(1)
 
  ```go
 
