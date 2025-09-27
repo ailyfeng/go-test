@@ -34,7 +34,7 @@ func main() {
 	这个概念来源于“回文”（Palindrome），即正着读和反着读都一样的字符串（如 "level"、"radar"、"上海海上"）。
 	*/
 	
-	var randNumber int =1234321// rand.Intn(50000)
+	var randNumber int =12344321// rand.Intn(5)
 	fmt.Println(randNumber)
 
 	flag:=isPalindrome(randNumber)
