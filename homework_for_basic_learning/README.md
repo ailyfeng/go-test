@@ -245,7 +245,6 @@ func removeDuplicates(nums []int) int{
 			index++ // 不相等的索引值递增
 		}
 	}
-	fmt.Println(nums)
 	return  index
 }
 
