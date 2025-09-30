@@ -211,3 +211,42 @@ func plusOne(digits []int)[]int{
 	
 }
 ```
+
+# 4、引用类型：切片
+
+# 4.1、 删除有序数组中的重复项
+
+
+删除有序数组中的重复项：给你一个有序数组 nums ，请你原地删除重复出现的元素，使每个元素只出现一次，返回删除后数组的新长度。不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。可以使用双指针法，一个慢指针 i 用于记录不重复元素的位置，一个快指针 j 用于遍历数组，当 nums[i] 与 nums[j] 不相等时，将 nums[j] 赋值给 nums[i + 1]，并将 i 后移一位。
+
+链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+
+
+解题思路
+	把当前元素和前一个元素比较，不相等就放在前面（需要一个不相等的索引值递增）
+
+
+- 时间复杂度：O(N)
+- 空间复杂度：O(1)
+
+```go
+
+
+func removeDuplicates(nums []int) int{
+	numsLen :=len(nums)
+	if(numsLen==0){
+		return 0
+	}
+
+	index:=1 // 不相等的索引值递增，第一元素视为独立值
+	for i:=1;i<numsLen;i++{
+		if(nums[i]!=nums[i-1]){ // 比较当前值和前一个值不相等
+			nums[index]=nums[i]// 不相等的值放在前面
+			index++ // 不相等的索引值递增
+		}
+	}
+	fmt.Println(nums)
+	return  index
+}
+
+```
