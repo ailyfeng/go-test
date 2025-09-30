@@ -238,7 +238,7 @@ func removeDuplicates(nums []int) int{
 		return 0
 	}
 
-	index:=1 // 不相等的索引值递增，第一元素视为独立值
+	index:=1 // 不相等的索引值递增，第0元素视为独立值
 	for i:=1;i<numsLen;i++{
 		if(nums[i]!=nums[i-1]){ // 比较当前值和前一个值不相等
 			nums[index]=nums[i]// 不相等的值放在前面
