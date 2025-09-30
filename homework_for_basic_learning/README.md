@@ -177,3 +177,37 @@ func longestCommonPrefix(strs []string) string{
 	return prefix
 }
 ```
+
+# 3、基本值类型
+
+## 3.1、加一 
+
+难度：简单
+
+考察：数组操作、进位处理
+
+题目：给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一
+
+链接：https://leetcode-cn.com/problems/plus-one/ 
+
+[解答](homework_for_basic_learning/base_type/task1/main.go)
+
+
+- 时间复杂度：O(N)
+- 空间复杂度：O(N) 这里数组元素都是9的情况下，数组长度就是n+1,否则是O(1)
+
+```go
+
+func plusOne(digits []int)[]int{
+	digitsLen:=len(digits)-1
+	for i:=digitsLen;i>=0;i--{
+		if(digits[i]<9){
+			digits[i]++
+			return digits
+		}
+		digits[i]=0
+	}
+	return append([]int{1},digits...)
+	
+}
+```
