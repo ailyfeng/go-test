@@ -432,3 +432,19 @@ func modify(p *int) {
 	*p += 10
 }
 ```
+
+### 2.1.2、slice
+题目 ：实现一个函数，接收一个整数切片的指针，将切片中的每个元素乘以2。
+考察点 ：指针运算、切片操作。
+
+[解题](homework_for_basic_learning/task2/point/task2/main.go)
+
+```go
+
+func modify(p *[]int){
+	for i:=range(*p){
+		(*p)[i] *=2
+	}
+}
+
+```
