@@ -19,7 +19,7 @@ func printOdd(nums []int,wg *sync.WaitGroup){
 
 // 打印偶数
 func printEven(nums []int,wg *sync.WaitGroup){
-	wg.Done()
+	defer wg.Done()
 	fmt.Print("\n打印偶数:")
 	for _,n:=range nums{
 		tmp:=n%2
