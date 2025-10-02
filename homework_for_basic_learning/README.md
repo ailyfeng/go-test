@@ -354,3 +354,60 @@ func merge(intervals [][]int) (merged [][]int){
 }
 
 ```
+
+# 3、 基础
+
+## 3.1、两数之和 
+
+
+考察：数组遍历、map使用
+
+题目：给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数
+
+链接：https://leetcode-cn.com/problems/two-sum/ 
+
+自写
+- 时间复杂度：O(n^2) 暴力破解
+- 空间复杂度：O(1)
+
+```go
+
+
+func twoSum(nums []int,target int)[]int{
+	if len(nums)<2{
+		return []int{}
+	}
+
+	
+	for i:=0;i<len(nums);i++{
+		
+		for j := i+1; j < len(nums); j++ {
+			if(nums[i]+nums[j]==target){
+				return []int{i,j}
+			}
+		}
+	}
+	return []int{}
+}
+
+```
+
+优化
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
+
+
+```go
+func twoSum1(nums []int,target int)[]int{
+	m:=make(map[int]int)
+	for index,v:=range(nums){
+		if res,exsits:=m[target-v];exsits{
+			return []int{res,index}
+		}
+		m[v]=index
+	}
+	return nil
+}
+
+```
+
