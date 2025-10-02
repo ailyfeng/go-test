@@ -415,3 +415,20 @@ func twoSum1(nums []int,target int)[]int{
 
 ```
 
+# 2 任务2
+
+## 2.1 指针
+
+### 2.1.1、 指针操作
+
+题目 ：编写一个Go程序，定义一个函数，该函数接收一个整数指针作为参数，在函数内部将该指针指向的值增加10，然后在主函数中调用该函数并输出修改后的值。
+考察点 ：指针的使用、值传递与引用传递的区别。
+
+[解题](homework_for_basic_learning/task2/point/task1/main.go)
+
+```go
+
+func modify(p *int) {
+	*p += 10
+}
+```
