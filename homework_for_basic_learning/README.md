@@ -5,7 +5,7 @@
 
 只出现一次的数字：给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。可以使用 for 循环遍历数组，结合 if 条件判断和 map 数据结构来解决，例如通过 map 记录每个元素出现的次数，然后再遍历 map 找到出现次数为1的元素。
 
- [使用异或方式解答，但是数组元素中，仅且有个元素出现一次，且其他元素都出现两次。](homework_for_basic_learning/task1/control_flow/task1/main.go)
+ [使用异或方式解答，但是数组元素中，仅且有个元素出现一次，且其他元素都出现两次。](task1/control_flow/task1/main.go)
 
 * 时间复杂度 = O(n)
 * 空间复杂度 = O(n)
@@ -53,7 +53,7 @@ func findOnlyOne(nums []int) int{
 
 回文数（Palindrome Number）是指一个数字，无论从左往右读还是从右往左读，其数值都完全相同的数。
 
-[使用字符串切片方式解答](homework_for_basic_learning/task1/control_flow/task2/main.go)
+[使用字符串切片方式解答](task1/control_flow/task2/main.go)
 
 自己写的代码：
 
@@ -110,7 +110,7 @@ func isPalindromeOther(x int)bool{
 
 链接：https://leetcode-cn.com/problems/valid-parentheses/
 
-[使用栈方式解答](homework_for_basic_learning/task1/string/task1/main.go)
+[使用栈方式解答](task1/string/task1/main.go)
 
 * 时间复杂度 = O(n). 遍历字符串 s
 * 空间复杂度 = O(n) 创建一个栈
@@ -152,7 +152,7 @@ func isValid(s string) bool{
 链接：https://leetcode-cn.com/problems/longest-common-prefix/ 
 
 
-[使用嵌套循环方式解答](homework_for_basic_learning/task1/string/task2/main.go)
+[使用嵌套循环方式解答](task1/string/task2/main.go)
 
 * 时间复杂度 = O(n*m) n为字符串数组的长度，m为字符串数组中字符串的长度
 * 空间复杂度 = O(1) 不使用额外空间
@@ -190,7 +190,7 @@ func longestCommonPrefix(strs []string) string{
 
 链接：https://leetcode-cn.com/problems/plus-one/ 
 
-[解答](homework_for_basic_learning/task1/base_type/task1/main.go)
+[解答](task1/base_type/task1/main.go)
 
 
 - 时间复杂度：O(N)
@@ -221,7 +221,7 @@ func plusOne(digits []int)[]int{
 
 链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 
-[解答](homework_for_basic_learning/task1/slice/task1/main.go)
+[解答](task1/slice/task1/main.go)
 
 解题思路
 	把当前元素和前一个元素比较，不相等就放在前面（需要一个不相等的索引值递增）
@@ -284,7 +284,7 @@ intervals[i].length == 2
 - 排序数组
 - 当前元素和结果集中最后一个元素比较：当前元素的最后一个值大于结果集中最后一个元素的第一个元素值时，就替换，否则追加到返回结果集中
 
-[代码](homework_for_basic_learning/task1/slice/task2/main.go)
+[代码](task1/slice/task2/main.go)
 
 - 时间复杂度：O(n Log n)
 - 空间复杂度：O(2n)
@@ -368,7 +368,7 @@ func merge(intervals [][]int) (merged [][]int){
 链接：https://leetcode-cn.com/problems/two-sum/ 
 
 
-[代码](homework_for_basic_learning/task1/base/task1/main.go)
+[代码](task1/base/task1/main.go)
 
 自写
 - 时间复杂度：O(n^2) 暴力破解
