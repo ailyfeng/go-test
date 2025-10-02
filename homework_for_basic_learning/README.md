@@ -249,3 +249,108 @@ func removeDuplicates(nums []int) int{
 }
 
 ```
+
+## 4.2 合并区间
+以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+
+ 
+
+示例 1：
+
+输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+输出：[[1,6],[8,10],[15,18]]
+解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+示例 2：
+
+输入：intervals = [[1,4],[4,5]]
+输出：[[1,5]]
+解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
+示例 3：
+
+输入：intervals = [[4,7],[1,4]]
+输出：[[1,7]]
+解释：区间 [1,4] 和 [4,7] 可被视为重叠区间。
+ 
+
+提示：
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+解题思路
+
+- 排序数组
+- 当前元素和结果集中最后一个元素比较：当前元素的最后一个值大于结果集中最后一个元素的第一个元素值时，就替换，否则追加到返回结果集中
+
+[代码](homework_for_basic_learning/slice/task2/main.go)
+
+- 时间复杂度：O(n Log n)
+- 空间复杂度：O(2n)
+```go
+
+func merge(intervals [][]int) [][]int {
+
+	length:=len(intervals)
+	if length<=1 {
+		return intervals
+	}
+
+	// 排序 O(n Log n)
+	sort.Slice(intervals,func (j,i int)  bool{
+		return intervals[j][0]<intervals[i][0]
+	})
+	// 初始化返回结果
+	var merged =[][]int{intervals[0]}
+	for i:=1;i<length;i++{
+		last :=&merged[len(merged)-1] // 指针读取，方便修改或替换
+		cur :=intervals[i]
+		if((*last)[1]>=cur[0]){ // 如果放回的结果值低一个元素 大于 当前值的开始值
+			(*last)[1]=max((*last)[1],cur[1]) // 指针修改直接替换
+		}else{
+			merged =append(merged,cur) // 追加到结果值中
+		}
+		
+	}
+
+	return merged
+}
+
+```
+
+优化
+
+- 时间复杂度：O(n Log n)
+- 空间复杂度：O(n)
+
+```go
+
+func merge(intervals [][]int) (merged [][]int){
+	
+	if len(intervals)<=1 {
+		return intervals
+	}
+
+	// 排序
+	sort.Slice(intervals,func (j,i int)  bool{
+		return intervals[j][0]<intervals[i][0]
+	})
+	
+	// 初始化返回结果
+	// merged:=[][]int{intervals[0]}
+	
+	for _,cur:=range(intervals){
+		length:=len(merged)
+		if length>0 && cur[0]<=merged[length-1][1]{ 
+			merged[length-1][1]=max(merged[length-1][1],cur[1])
+		}else{
+			merged =append(merged,cur) // 追加到结果值中
+		}
+		
+	}
+
+	return merged
+
+}
+
+```
