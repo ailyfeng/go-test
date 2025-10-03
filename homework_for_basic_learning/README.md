@@ -482,3 +482,46 @@ func printEven(nums []int,wg *sync.WaitGroup){
 	}
 }
 ```
+
+### 2.2.2 多任务调度器
+
+	题目 ：设计一个任务调度器，接收一组任务（可以用函数表示），并使用协程并发执行这些任务，同时统计每个任务的执行时间。
+	考察点 ：协程原理、并发任务调度。
+
+[解题](task2/goroutine/task2/main.go)
+
+```go
+
+type Task func()
+
+type TaskInfo struct{
+	Name string
+	Duration time.Duration
+}
+
+func ExecuteTasks(tasks map[string]Task) (result []TaskInfo){
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+
+	for taskName,task:=range tasks{
+		wg.Add(1)
+		go func(taskName string,t Task){
+			defer wg.Done()
+			startTime := time.Now()
+			t()
+			duration :=time.Since(startTime)
+
+			mu.Lock()
+			result=append(result, TaskInfo{
+				Name: taskName,
+				Duration:duration,
+			})
+			mu.Unlock()
+
+		}(taskName,task)
+	}
+	wg.Wait()
+	return result
+}
+
+```
