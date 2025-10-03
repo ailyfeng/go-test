@@ -525,3 +525,133 @@ func ExecuteTasks(tasks map[string]Task) (result []TaskInfo){
 }
 
 ```
+## 2.3、面向对象
+
+### 2.3.1、接口的实现
+题目 ：定义一个 Shape 接口，包含 Area() 和 Perimeter() 两个方法。然后创建 Rectangle 和 Circle 结构体，实现 Shape 接口。在主函数中，创建这两个结构体的实例，并调用它们的 Area() 和 Perimeter() 方法。
+考察点 ：接口的定义与实现、面向对象编程风格。
+[解题](task2/object/task1/main.go)
+
+```go
+
+const PI float32 =3.141592657
+
+type Shape interface{
+	Area() float32
+	Perimeter() float32
+}
+
+type Rectangle struct{
+	Width float32
+	Height float32
+	
+}
+
+type Circle struct{
+	Radius int
+}
+
+func (rec Rectangle) Area() float32{
+	return rec.Width*rec.Height
+}
+
+func (rec Rectangle) Perimeter() float32{
+	return (rec.Height+rec.Width)*2
+}
+
+func (cir Circle) Area() float32{
+	return float32(cir.Radius*cir.Radius)*PI
+}
+
+
+func (rec Circle) Perimeter() float32{
+	return float32(rec.Radius)*2*PI
+}
+
+```
+
+
+### 2.3.2、
+题目 ：使用组合的方式创建一个 Person 结构体，包含 Name 和 Age 字段，再创建一个 Employee 结构体，组合 Person 结构体并添加 EmployeeID 字段。为 Employee 结构体实现一个 PrintInfo() 方法，输出员工的信息。
+考察点 ：组合的使用、方法接收者。
+
+[解题](task2/object/task2/main.go)
+```go
+
+type Person struct{
+	Name string
+	Age int
+}
+
+type Employee struct{
+	Person
+	EmployeeID int
+}
+
+func (emp Employee) PrintInfo(){
+	// fmt.Printf("EmployeeID:\t%d\nName:\t\t%s\nAge:\t\t%d\n",emp.EmployeeID,emp.Name,emp.Age)
+	fmt.Printf("EmployeeID:\t%d\n",emp.EmployeeID)
+	fmt.Printf("Name:\t\t%s\n",emp.Name)
+	fmt.Printf("Age:\t\t%d\n",emp.Age)
+}
+
+```
+
+## 2.4、Channel
+
+### 2.4.1、通道1
+题目 ：编写一个程序，使用通道实现两个协程之间的通信。一个协程生成从1到10的整数，并将这些整数发送到通道中，另一个协程从通道中接收这些整数并打印出来。
+考察点 ：通道的基本使用、协程间通信。
+
+[解题](task2/Channel/task1/main.go)
+
+```go
+
+	var wg sync.WaitGroup
+
+	ch:=make(chan int,10)
+	wg.Add(1)
+	go func (){
+		defer wg.Done()
+		for i := 0; i < 10; i++ {
+			ch <-i
+		}
+		close(ch)
+	}()
+
+	wg.Add(1)
+	go func(){
+		defer wg.Done()
+		for num:=range ch{
+			fmt.Println(num)
+		}
+	}()
+
+	wg.Wait()
+
+```
+
+### 2.4.2、通道2
+题目 ：实现一个带有缓冲的通道，生产者协程向通道中发送100个整数，消费者协程从通道中接收这些整数并打印。
+考察点 ：通道的缓冲机制。
+
+[解题](task2/Channel/task2/main.go)
+
+```go
+
+func producer(ch chan<- int,wg *sync.WaitGroup){
+	defer wg.Done()
+	for i:=0;i<100;i++{
+		ch<-i
+	}
+	close(ch)
+}
+
+func consumer(ch <-chan int,wg *sync.WaitGroup){
+	defer wg.Done()
+	for num:=range ch{
+		fmt.Println(num)
+	}
+}
+
+```
